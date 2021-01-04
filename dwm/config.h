@@ -66,7 +66,7 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *web[]  = { "firefox", NULL };
 static const char *files[]  = { "thunar", NULL };
 static const char *editor[]  = { "vim", NULL };
-
+/* test */
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },
