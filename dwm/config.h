@@ -97,6 +97,10 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	/* App Launchers */
+	{ MODKEY,                       XK_z,      spawn,          {.v = firefox } },
+	{ MODKEY,                       XK_x,      spawn,          {.v = thunar } },
+	{ MODKEY,                       XK_c,      spawn,          {.v = vim } },
 };
 
 /* button definitions */
