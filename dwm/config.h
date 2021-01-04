@@ -18,6 +18,9 @@ static const char *colors[][3]      = {
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 };
 
+/* gap pixel between windows */
+static const unsigned int gappx     = 4;
+
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
@@ -62,6 +65,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 static const char *web[]  = { "firefox", NULL };
 static const char *files[]  = { "thunar", NULL };
+static const char *editor[]  = { "codium", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -100,9 +104,9 @@ static Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	/* App Launchers */
-	{ MODKEY,                       XK_z,      spawn,          {.v = web } },
-	{ MODKEY,                       XK_x,      spawn,          {.v = files } },
-
+	{ MODKEY,                       XK_b,      spawn,          {.v = web } },
+	{ MODKEY,                       XK_f,      spawn,          {.v = files } },
+	{ MODKEY,                       XK_e,      spawn,          {.v = editor } },
 };
 
 /* button definitions */
