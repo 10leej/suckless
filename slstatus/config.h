@@ -67,5 +67,12 @@ static const struct arg args[] = {
 	/* function format          argument */
 	{ battery_state, "%s"    , "BAT0" }, 
     { battery_perc,  " %s%% ", "BAT0" },
-	{ datetime, "%s",           "%F %T" },
+	{ cpu_perc,	" %s%% |", NULL },
+	{ ram_perc,	" %s%% |", NULL },
+	{ disk_perc,	" %s%% |", "/home/joshua/" },
+	{ ipv4,		" %2s |", "eth0" },
+	{ run_command,	" %2s |", "ip a | grep tun0 | grep inet | wc -l" },
+	{ run_command,	" %2s |", "amixer sget Master | grep Right | grep % | sed 's/[][]//g' | awk '{print $5}' " },
+	{ run_command,	" %2s ", "sed 20q ~/.config/weather.txt | grep value | awk '{print $2 $3}' | sed 's/\"//g' " },
+	{ datetime, "%s",           "%a, %b  %d %R" },
 };
