@@ -113,9 +113,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_f,      spawn,          {.v = files } }, /* open file manager */
 	{ MODKEY,                       XK_e,      spawn,          {.v = editor } }, /* open text editor */
 
-	{ 0,                            XK_Print,   spawn,          {.v = print_screen_cmd } }, /* screenshot */
-	{ ShiftMask,                    XK_Print,   spawn,          {.v = print_region_cmd } }, /* screenshot */
-	{ ControlMask,                  XK_Print,   spawn,          {.v = print_window_cmd } }, /* screenshot */
+	{ 0,                            XK_Print,   spawn,          {.v = print_screen_cmd } }, /* full screenshot */
+	{ ShiftMask,                    XK_Print,   spawn,          {.v = print_region_cmd } }, /* region screenshot */
+	{ ControlMask,                  XK_Print,   spawn,          {.v = print_window_cmd } }, /* window screenshot */
 };
 
 /* button definitions */
