@@ -61,11 +61,15 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "rofi -show drun", NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *roficmd[] = { "rofi", "-show", "drun", "-show-icons", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *web[]  = { "firefox", NULL };
 static const char *files[]  = { "pcmanfm", NULL };
 static const char *editor[]  = { "codium", NULL };
+static const char *print_screen_cmd[] = { "maim", "~/Pictures/Screenshots/$(date +%s).png", NULL };
+static const char *print_region_cmd[] = { "maim", "-s", "~/Pictures/Screenshots/$(date +%s).png", NULL };
+static const char *print_window_cmd[] = { "maim", "-i", "~/Pictures/Screenshots/$(date +%s).png", NULL };
 /* test */
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -102,11 +106,16 @@ static Key keys[] = {
 	TAGKEYS(                        XK_9,                      8) /* switch to tag 9 */
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} }, /* quit dwm */
 	/* App Launchers */
-	{ MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } }, /* open dmenu */
+	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } }, /* open dmenu */
+	{ MODKEY,                       XK_r,      spawn,          {.v = roficmd } }, /* open rofi */
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } }, /* open terminal */
 	{ MODKEY,                       XK_b,      spawn,          {.v = web } }, /* open web browser 1 */
 	{ MODKEY,                       XK_f,      spawn,          {.v = files } }, /* open file manager */
 	{ MODKEY,                       XK_e,      spawn,          {.v = editor } }, /* open text editor */
+
+	{ 0,                            XK_Print,   spawn,          {.v = print_screen_cmd } }, /* screenshot */
+	{ ShiftMask,                    XK_Print,   spawn,          {.v = print_region_cmd } }, /* screenshot */
+	{ ControlMask,                  XK_Print,   spawn,          {.v = print_window_cmd } }, /* screenshot */
 };
 
 /* button definitions */
