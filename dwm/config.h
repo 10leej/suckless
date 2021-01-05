@@ -65,7 +65,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *web[]  = { "firefox", NULL };
 static const char *files[]  = { "pcmanfm", NULL };
-static const char *editor[]  = { "vim", NULL };
+static const char *editor[]  = { "codium", NULL };
 /* test */
 static Key keys[] = {
 	/* modifier                     key        function        argument */
