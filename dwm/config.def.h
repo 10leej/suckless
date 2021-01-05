@@ -69,7 +69,7 @@ static const char *files[]  = { "pcmanfm", NULL };
 static const char *editor[]  = { "codium", NULL };
 static const char *print_screen_cmd[] = { "maim", "~/Pictures/Screenshots/$(date +%s).png", NULL };
 static const char *print_region_cmd[] = { "maim", "-s", "~/Pictures/Screenshots/$(date +%s).png", NULL };
-static const char *print_window_cmd[] = { "maim", "-i", "~/Pictures/Screenshots/$(date +%s).png", NULL };
+static const char *print_window_cmd[] = { "maim", "-i", "$(xdotool getactivewindow)", "~/Pictures/Screenshots/$(date +%s).png", NULL };
 /* test */
 static Key keys[] = {
 	/* modifier                     key        function        argument */
