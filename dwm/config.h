@@ -67,9 +67,9 @@ static const char *termcmd[]  = { "alacritty", NULL };
 static const char *web[]  = { "firefox", NULL };
 static const char *files[]  = { "pcmanfm", NULL };
 static const char *editor[]  = { "codium", NULL };
-static const char *print_screen_cmd[] = { "maim", "~/Pictures/Screenshots/$(date +%s).png", NULL };
-static const char *print_region_cmd[] = { "maim", "-s", "~/Pictures/Screenshots/$(date +%s).png", NULL };
-static const char *print_window_cmd[] = { "maim", "-i", "$(xdotool getactivewindow)", "~/Pictures/Screenshots/$(date +%s).png", NULL };
+static const char *print_screen_cmd[] = { "/bin/sh", "-c", "maim ~/Pictures/Screenshots/$(date +%s).png", NULL };
+static const char *print_region_cmd[] = { "/bin/sh", "-c", "maim -s ~/Pictures/Screenshots/$(date +%s).png", NULL };
+static const char *print_window_cmd[] = { "/bin/sh", "-c", "maim -i $(xdotool getactivewindow) ~/Pictures/Screenshots/$(date +%s).png", NULL };
 /* test */
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -113,9 +113,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_f,      spawn,          {.v = files } }, /* open file manager */
 	{ MODKEY,                       XK_e,      spawn,          {.v = editor } }, /* open text editor */
 
-	{ MODKEY,                            XK_Print,   spawn,          {.v = print_screen_cmd } }, /* full screenshot */
-	{ MODKEY|ShiftMask,                    XK_Print,   spawn,          {.v = print_region_cmd } }, /* region screenshot */
-	{ MODKEY|ControlMask,                  XK_Print,   spawn,          {.v = print_window_cmd } }, /* window screenshot */
+	{ 0,                            XK_Print,   spawn,          {.v = print_screen_cmd } }, /* full screenshot */
+	{ ShiftMask,                    XK_Print,   spawn,          {.v = print_region_cmd } }, /* region screenshot */
+	{ ControlMask,                  XK_Print,   spawn,          {.v = print_window_cmd } }, /* window screenshot */
 };
 
 /* button definitions */
