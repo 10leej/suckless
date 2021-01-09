@@ -39,6 +39,8 @@ static const Rule rules[] = {
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 	{ "Pcmanfm",     NULL,       NULL,       0,            1,           -1 },
 	{ "Virt-manager",     NULL,       NULL,       0,            1,           -1 },
+	{ "discord",     NULL,       NULL,       0,            0,           -2 },
+	{ "element",     NULL,       NULL,       0,            0,           -2 },
 //	{ "Dungeondraft",     NULL,       NULL,       2,            1,           -1 },
 
 };
