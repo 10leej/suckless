@@ -1,6 +1,13 @@
 # My Suckless Tools
 These are my copies of the suckless programs I use. I modify all these through the config.def.h file but I do save the original copies of each file as confg.def.h.og should I ever need them.  
 This is because when you compile these programs after patching sometimes make will error, so best practice is to just simply deal with config.def.h instead of config.h like how the suckless devs recommend.  
+The default layout for dwm is the Fibonacci layout
+dwm patches used:  
+autostart  
+fancybar  
+fedora (madatory for Fedora only)  
+fibonacci  
+uselessgap
 
 # Instructions
 I compile these under Fedora 33 but you need to install the Development Tools group  
