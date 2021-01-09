@@ -71,5 +71,6 @@ static const struct arg args[] = {
 	{ ram_perc,	"MEM: %s%% |", NULL },
 	{ disk_perc,	"DISK: %s%% |", "/home/joshua/" },
 	{ run_command,	"VOL: %2s |", "amixer sget Master | grep Right | grep % | sed 's/[][]//g' | awk '{print $5}' " },
+//	{ datetime, "%s",           "%F %T" },
 	{ datetime, "%s",           "%a, %b  %d %R" },
 };
