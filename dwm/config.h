@@ -74,10 +74,12 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *roficmd[] = { "rofi", "-show", "drun", "-show-icons", NULL };
-static const char *termcmd[]  = { "alacritty", NULL };
+static const char *termcmd[]  = { "xterm", NULL };
 static const char *web[]  = { "firefox", NULL };
 static const char *files[]  = { "pcmanfm", NULL };
 static const char *editor[]  = { "codium", NULL };
+static const char *webserver_cmd[] = { "/bin/sh", "-c", "alacritty -e ssh joshua@10leej.com", NULL };
+static const char *localserver_cmd[] = { "/bin/sh", "-c", "alacritty -e ssh joshua@10leej.com", NULL };
 static const char *print_screen_cmd[] = { "/bin/sh", "-c", "maim ~/Pictures/Screenshots/$(date +%s).png", NULL };
 static const char *print_region_cmd[] = { "/bin/sh", "-c", "maim -s ~/Pictures/Screenshots/$(date +%s).png", NULL };
 static const char *print_window_cmd[] = { "/bin/sh", "-c", "maim -i $(xdotool getactivewindow) ~/Pictures/Screenshots/$(date +%s).png", NULL };
@@ -127,6 +129,9 @@ static Key keys[] = {
 	{ 0,                            XK_Print,   spawn,          {.v = print_screen_cmd } }, /* full screenshot */
 	{ ShiftMask,                    XK_Print,   spawn,          {.v = print_region_cmd } }, /* region screenshot */
 	{ ControlMask,                  XK_Print,   spawn,          {.v = print_window_cmd } }, /* window screenshot */
+
+	{ MODKEY,           XK_F12,   spawn,          {.v = webserver_cmd } }, /* ssh into web server */
+	{ MODKEY,           XK_F11,   spawn,          {.v = localserver_cmd } }, /* ssh into local server */
 };
 
 /* button definitions */
