@@ -80,6 +80,7 @@ static const char *files[]  = { "pcmanfm", NULL };
 static const char *editor[]  = { "codium", NULL };
 static const char *webserver_cmd[] = { "/bin/sh", "-c", "alacritty -e ssh joshua@10leej.com", NULL };
 static const char *localserver_cmd[] = { "/bin/sh", "-c", "alacritty -e ssh joshua@10leej.com", NULL };
+static const char *weather_cmd[] = { "/bin/sh", "-c", "alacritty -e curl wttr.in", NULL };
 static const char *print_screen_cmd[] = { "/bin/sh", "-c", "maim ~/Pictures/Screenshots/$(date +%s).png", NULL };
 static const char *print_region_cmd[] = { "/bin/sh", "-c", "maim -s ~/Pictures/Screenshots/$(date +%s).png", NULL };
 static const char *print_window_cmd[] = { "/bin/sh", "-c", "maim -i $(xdotool getactivewindow) ~/Pictures/Screenshots/$(date +%s).png", NULL };
@@ -89,17 +90,21 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} }, /* toggle the top status bar */
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } }, /* change focus to the left */
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } }, /* change focus to the right */
-	{ MODKEY,                       XK_s,      incnmaster,     {.i = +1 } }, /* single app focus? */
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } }, /* not sure yet */
+	
+	{ MODKEY,                       XK_s,      incnmaster,     {.i = +1 } }, /* make focus a master */
+	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } }, /* remove master status */
+
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} }, /* not sure yet*/
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} }, /* not sure yet*/
 	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} }, /* doesn't seem to work */
 	{ MODKEY,                       XK_Tab,    view,           {0} }, /* doesn't seem to work */
 	{ MODKEY,                       XK_q,      killclient,     {0} }, /* kill application */
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} }, /* set tile layout */
-	{ MODKEY,                       XK_y,      setlayout,      {.v = &layouts[1]} }, /* set floating layout */
-	{ MODKEY,                       XK_u,      setlayout,      {.v = &layouts[2]} }, /* set fibonacci layout */
-	{ MODKEY,                       XK_i,      setlayout,      {.v = &layouts[3]} }, /* set monocle layout */
+	
+	{ MODKEY,                       XK_y,      setlayout,      {.v = &layouts[0]} }, /* set tile layout */
+	{ MODKEY,                       XK_u,      setlayout,      {.v = &layouts[1]} }, /* set floating layout */
+	{ MODKEY,                       XK_i,      setlayout,      {.v = &layouts[2]} }, /* set fibonacci layout */
+	{ MODKEY,                       XK_o,      setlayout,      {.v = &layouts[3]} }, /* set monocle layout */
+	
 	{ MODKEY,                       XK_space,  setlayout,      {0} }, /* set to default tile layout, this can't change */
 	{ MODKEY|ControlMask,           XK_space,  togglefloating, {0} }, /* toggle window floating */
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } }, /* not sure yet */
@@ -130,6 +135,7 @@ static Key keys[] = {
 	{ ShiftMask,                    XK_Print,   spawn,          {.v = print_region_cmd } }, /* region screenshot */
 	{ ControlMask,                  XK_Print,   spawn,          {.v = print_window_cmd } }, /* window screenshot */
 
+	{ MODKEY,           XK_F1,   spawn,          {.v = weather_cmd } }, /* ssh into web server */
 	{ MODKEY,           XK_F12,   spawn,          {.v = webserver_cmd } }, /* ssh into web server */
 	{ MODKEY,           XK_F11,   spawn,          {.v = localserver_cmd } }, /* ssh into local server */
 };
